@@ -8,122 +8,107 @@ class TDDSongTest {
 
     @Test
     public void testVacio(){
-        TDDSong t1 = new TDDSong();
         List<String> animals = new ArrayList<>();
         String resultadoEsperado= "";
-        String resultadoReal = t1.createSong(animals) ;
+        String resultadoReal = TDDSong.createSong(animals) ;
 
         assertEquals(resultadoEsperado, resultadoReal);
     }
 
     @Test
     public void testFly(){
-        TDDSong t1 = new TDDSong();
-        List<String> animals = new ArrayList<>();
-        String animal1 = "fly";
-        animals.add(animal1);
-        String resultadoEsperado= "\"There was an old lady who swallowed a fly.\n" +
-                "\"I don't know why she swallowed a fly - perhaps she'll die!\n\"";
-        String resultadoReal = t1.createSong(animals) ;
+        List<String> animals = new ArrayList<>(List.of("fly"));
+        String resultadoEsperado= """
+                "There was an old lady who swallowed a fly.
+                "I don't know why she swallowed a fly - perhaps she'll die!
+                \"""";
+        String resultadoReal = TDDSong.createSong(animals) ;
         assertEquals(resultadoEsperado, resultadoReal);
     }
 
     @Test
     public void testSpider(){
-        TDDSong t1 = new TDDSong();
-        List<String> animals = new ArrayList<>();
-        String animal1 = "spider";
-        animals.add(animal1);
-        String resultadoEsperado= "\"There was an old lady who swallowed a spider.\n" +
-                "\"I don't know why she swallowed a spider - perhaps she'll die!\n\"";
-        String resultadoReal = t1.createSong(animals) ;
+        List<String> animals = new ArrayList<>(List.of("spider"));
+        String resultadoEsperado= """
+                "There was an old lady who swallowed a spider.
+                "I don't know why she swallowed a spider - perhaps she'll die!
+                \"""";
+        String resultadoReal = TDDSong.createSong(animals) ;
         assertEquals(resultadoEsperado, resultadoReal);
     }
 
 
     @Test
     public void testFlySpider(){
-        TDDSong t1 = new TDDSong();
-        List<String> animals = new ArrayList<>();
-        String animal1 = "fly";
-        String animal2 = "spider";
-        animals.add(animal1);
-        animals.add(animal2);
-        String resultadoEsperado= "\"There was an old lady who swallowed a fly.\n" +
-                "\"I don't know why she swallowed a fly - perhaps she'll die!\n\"" +
-        "\"There was an old lady who swallowed a spider" +
-                ".\n\"" + "\"That wriggled and wiggled and tickled inside her.\n\"" +
-                "\"She swallowed the spider to catch the fly\n\"" + "\"I don't know why she swallowed a fly - perhaps she'll die!\n\"";
-        String resultadoReal = t1.createSong(animals) ;
+        List<String> animals = new ArrayList<>(List.of("fly", "spider"));
+        String resultadoEsperado= """
+                "There was an old lady who swallowed a fly.
+                "I don't know why she swallowed a fly - perhaps she'll die!
+                ""There was an old lady who swallowed a spider.
+                ""That wriggled and wiggled and tickled inside her.
+                ""She swallowed the spider to catch the fly
+                ""I don't know why she swallowed a fly - perhaps she'll die!
+                \"""";
+        String resultadoReal = TDDSong.createSong(animals) ;
         assertEquals(resultadoEsperado, resultadoReal);
     }
 
     @Test
     public void testSpiderFly(){
-        TDDSong t1 = new TDDSong();
-        List<String> animals = new ArrayList<>();
-        String animal1 = "spider";
-        String animal2 = "fly";
-        animals.add(animal1);
-        animals.add(animal2);
-        String resultadoEsperado= "\"There was an old lady who swallowed a spider.\n" +
-                "\"I don't know why she swallowed a spider - perhaps she'll die!\n\"" +
-                "\"There was an old lady who swallowed a fly" +
-                ".\n\"" + "\"That wriggled and wiggled and tickled inside her.\n\"" +
-                "\"She swallowed the fly to catch the spider\n\"" + "\"I don't know why she swallowed a spider - perhaps she'll die!\n\"";
-        String resultadoReal = t1.createSong(animals) ;
+        List<String> animals = new ArrayList<>(List.of("spider", "fly"));
+        String resultadoEsperado= """
+                "There was an old lady who swallowed a spider.
+                "I don't know why she swallowed a spider - perhaps she'll die!
+                ""There was an old lady who swallowed a fly.
+                ""That wriggled and wiggled and tickled inside her.
+                ""She swallowed the fly to catch the spider
+                ""I don't know why she swallowed a spider - perhaps she'll die!
+                \"""";
+        String resultadoReal = TDDSong.createSong(animals) ;
         assertEquals(resultadoEsperado, resultadoReal);
     }
 
     @Test
     public void testFlySpiderBird(){
-        TDDSong t1 = new TDDSong();
-        List<String> animals = new ArrayList<>();
-        String animal1 = "fly";
-        String animal2 = "spider";
-        String animal3 = "bird";
-        animals.add(animal1);
-        animals.add(animal2);
-        animals.add(animal3);
-        String resultadoEsperado= "\"There was an old lady who swallowed a fly.\n" +
-                "\"I don't know why she swallowed a fly - perhaps she'll die!\n\"" +
-                "\"There was an old lady who swallowed a spider" +
-                ".\n\"" + "\"That wriggled and wiggled and tickled inside her.\n\"" +
-                "\"She swallowed the spider to catch the fly\n\"" + "\"I don't know why she swallowed a fly - perhaps she'll die!\n\"" +
-                "\"There was an old lady who swallowed a bird;\n\"" +
-                "\"How absurd to swallow a bird.\n\"" +
-                "\"She swallowed the bird to catch the spider,\n\"" +
-                "\"She swallowed the spider to catch the fly;\n\"" +
-                "\"I don't know why she swallowed a fly - perhaps she'll die!\n\"" +
-                "\n";
+        List<String> animals = new ArrayList<>(List.of("fly", "spider", "bird"));
+        String resultadoEsperado= """
+                "There was an old lady who swallowed a fly.
+                "I don't know why she swallowed a fly - perhaps she'll die!
+                ""There was an old lady who swallowed a spider.
+                ""That wriggled and wiggled and tickled inside her.
+                ""She swallowed the spider to catch the fly
+                ""I don't know why she swallowed a fly - perhaps she'll die!
+                ""There was an old lady who swallowed a bird;
+                ""How absurd to swallow a bird.
+                ""She swallowed the bird to catch the spider,
+                ""She swallowed the spider to catch the fly;
+                ""I don't know why she swallowed a fly - perhaps she'll die!
+                "
+                """;
 
-        String resultadoReal = t1.createSong(animals) ;
+        String resultadoReal = TDDSong.createSong(animals) ;
         assertEquals(resultadoEsperado, resultadoReal);
     }
 
     @Test
     public void testBirdFlySpider(){
-        TDDSong t1 = new TDDSong();
-        List<String> animals = new ArrayList<>();
-        String animal1 = "bird";
-        String animal2 = "fly";
-        String animal3 = "spider";
-        animals.add(animal1);
-        animals.add(animal2);
-        animals.add(animal3);
-        String resultadoEsperado= "\"There was an old lady who swallowed a bird.\n" +
-                "\"I don't know why she swallowed a bird - perhaps she'll die!\n\"" +
-                "\"There was an old lady who swallowed a fly" +
-                ".\n\"" + "\"That wriggled and wiggled and tickled inside her.\n\"" +
-                "\"She swallowed the fly to catch the bird\n\"" + "\"I don't know why she swallowed a bird - perhaps she'll die!\n\"" +
-                "\"There was an old lady who swallowed a spider;\n\"" +
-                "\"How absurd to swallow a spider.\n\"" +
-                "\"She swallowed the spider to catch the fly,\n\"" +
-                "\"She swallowed the fly to catch the bird;\n\"" +
-                "\"I don't know why she swallowed a bird - perhaps she'll die!\n\"" +
-                "\n";
+        List<String> animals = new ArrayList<>(List.of("bird", "fly", "spider"));
+        String resultadoEsperado= """
+                "There was an old lady who swallowed a bird.
+                "I don't know why she swallowed a bird - perhaps she'll die!
+                ""There was an old lady who swallowed a fly.
+                ""That wriggled and wiggled and tickled inside her.
+                ""She swallowed the fly to catch the bird
+                ""I don't know why she swallowed a bird - perhaps she'll die!
+                ""There was an old lady who swallowed a spider;
+                ""How absurd to swallow a spider.
+                ""She swallowed the spider to catch the fly,
+                ""She swallowed the fly to catch the bird;
+                ""I don't know why she swallowed a bird - perhaps she'll die!
+                "
+                """;
 
-        String resultadoReal = t1.createSong(animals) ;
+        String resultadoReal = TDDSong.createSong(animals) ;
         assertEquals(resultadoEsperado, resultadoReal);
     }
 

@@ -1,7 +1,11 @@
 import java.util.List;
 
 public class TDDSong {
-    public String createSong(List<String> animals) {
+
+    private static String animal1 ;
+    private static String animal2 ;
+    private static String animal3;
+    public static String createSong(List<String> animals) {
         int listSize = animals.size();
         String song = "";
         switch (listSize){
@@ -15,36 +19,39 @@ public class TDDSong {
         return song;
     }
 
-    public String songSize1(List<String> animals){
-        String animal1 = animals.get(0);
-        return "\"There was an old lady who swallowed a " + animal1 +".\n" +
-                "\"I don't know why she swallowed a " +  animal1 + " - perhaps she'll die!\n\"";
+    public static String songSize1(List<String> animals){
+        animal1 = animals.get(0);
+        String[] frases = fillPhrases();
+        return frases[0];
     }
 
-    public String songSize2(List<String> animals) {
-        String animal1 = animals.get(0);
-        String animal2 = animals.get(1);
-        String paragraph = "";
-        paragraph += songSize1(animals);
-        paragraph += "\"There was an old lady who swallowed a " + animal2 +
+    public static String songSize2(List<String> animals) {
+        animal1 = animals.get(0);
+        animal2 = animals.get(1);
+        String[] frases = fillPhrases();
+        return frases[0] + frases[1];
+    }
+
+    public static String songSize3(List<String> animals) {
+        animal1 = animals.get(0);
+        animal2 = animals.get(1);
+        animal3 = animals.get(2);
+        String[] frases = fillPhrases();
+        return frases[0] + frases[1] + frases[2];
+    }
+
+    public static String[] fillPhrases(){
+        return  new String[]{"\"There was an old lady who swallowed a " + animal1 +".\n" +
+                "\"I don't know why she swallowed a " +  animal1 + " - perhaps she'll die!\n\"",
+                "\"There was an old lady who swallowed a " + animal2 +
                 ".\n\"" + "\"That wriggled and wiggled and tickled inside her.\n\"" +
-                "\"She swallowed the " + animal2 + " to catch the "+ animal1 +"\n\"" + "\"I don't know why she swallowed a "+ animal1 +" - perhaps she'll die!\n\"";
-        return paragraph;
-    }
-
-    public String songSize3(List<String> animals) {
-        String animal1 = animals.get(0);
-        String animal2 = animals.get(1);
-        String animal3 = animals.get(2);
-        String paragraph = "";
-        paragraph += songSize2(animals);
-        paragraph += "\"There was an old lady who swallowed a "+ animal3 +";\n\"" +
+                "\"She swallowed the " + animal2 + " to catch the "+ animal1 +"\n\"" +
+                "\"I don't know why she swallowed a "+ animal1 +" - perhaps she'll die!\n\"",
+                "\"There was an old lady who swallowed a "+ animal3 +";\n\"" +
                 "" + "\"How absurd to swallow a "+ animal3 +".\n\"" +
                 "\"She swallowed the "+ animal3 +" to catch the "+ animal2 +",\n\"" +
                 "\"She swallowed the "+ animal2 +" to catch the "+ animal1 +";\n\"" +
                 "\"I don't know why she swallowed a "+ animal1 +" - perhaps she'll die!\n\"" +
-                "\n";
-
-        return paragraph;
+                "\n"};
     }
 }
